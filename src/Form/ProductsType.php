@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Products;
+use App\Entity\Categories;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductsType extends AbstractType
@@ -16,8 +18,15 @@ class ProductsType extends AbstractType
             ->add('descriptionProduct')
             ->add('priceProduct')
             ->add('stockProduct')
-            ->add('category')
-            ->add('user')
+            ->add('category', EntityType::class, [
+                'class' => Categories::class,
+                'choice_label' => 'nameCategory',
+                ])
+            // ->add('user', EntityType::class, [
+            //     'class' => User::class,
+            //     'choice_label' => 'nameCategory',
+            //     ])
+            // ->add('user')
         ;
     }
 
