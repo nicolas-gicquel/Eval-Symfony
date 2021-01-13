@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photos{% endblock %}
+
+{% block body %}
+    <h1>Photos</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ photo.id }}</td>
+            </tr>
+            <tr>
+                <th>AltPhoto</th>
+                <td>{{ photo.altPhoto }}</td>
+            </tr>
+            <tr>
+                <th>NamePhoto</th>
+                <td>{{ photo.namePhoto }}</td>
+            </tr>
+            <tr>
+                <th>MajorPhoto</th>
+                <td>{{ photo.majorPhoto ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('photos_index') }}">back to list</a>
+
+    <a href="{{ path('photos_edit', {'id': photo.id}) }}">edit</a>
+
+    {{ include('photos/_delete_form.html.twig') }}
+{% endblock %}
