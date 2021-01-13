@@ -15,6 +15,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    public const ROLE_USER = 'ROLE_USER';
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -77,6 +79,7 @@ class User implements UserInterface
     {
         $this->products = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->roles = [self::ROLE_USER];
     }
 
     public function getId(): ?int
