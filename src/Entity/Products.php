@@ -40,7 +40,7 @@ class Products
     private $stockProduct;
 
     /**
-     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="product")
+     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="product",cascade={"persist"})
      */
     private $photos;
 
@@ -138,12 +138,14 @@ class Products
 
     public function removePhoto(Photos $photo): self
     {
+        if ($this->images->contains($photo)) {
         if ($this->photos->removeElement($photo)) {
             // set the owning side to null (unless already changed)
             if ($photo->getProduct() === $this) {
                 $photo->setProduct(null);
             }
         }
+    }
 
         return $this;
     }

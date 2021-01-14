@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProductsType extends AbstractType
 {
@@ -21,13 +22,13 @@ class ProductsType extends AbstractType
             ->add('category', EntityType::class, [
                 'class' => Categories::class,
                 'choice_label' => 'nameCategory',
-                ])
-            // ->add('user', EntityType::class, [
-            //     'class' => User::class,
-            //     'choice_label' => 'nameCategory',
-            //     ])
-            // ->add('user')
-        ;
+            ])
+            ->add('photos', FileType::class, [
+                'label' => false,
+                'multiple' => true,
+                'mapped' => false,
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

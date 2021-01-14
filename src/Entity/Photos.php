@@ -28,7 +28,7 @@ class Photos
     private $namePhoto;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $majorPhoto;
 
