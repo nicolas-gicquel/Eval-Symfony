@@ -52,6 +52,7 @@ class ProductsController extends AbstractController
                 $img = new Photos();
                 $img->setNamePhoto($fichier);
                 $product->addPhoto($img);
+                $this->addFlash('success', 'Votre produit a bien été ajouté');
             }
             $product->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
@@ -86,7 +87,26 @@ class ProductsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $photos = $form->get('photos')->getData();
+            foreach($photos as $photo){
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()).'.'.$photo->guessExtension();
+                
+                // On copie le fichier dans le dossier uploads
+                $photo->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                
+                // On crée l'image dans la base de données
+                $img = new Photos();
+                $img->setNamePhoto($fichier);
+                $product->addPhoto($img);
+            }
+            $product->setUser($this->getUser());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($product);
+            $entityManager->flush();
 
             return $this->redirectToRoute('products_index');
         }

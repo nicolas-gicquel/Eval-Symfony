@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Products;
 use App\Entity\Categories;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,7 +17,7 @@ class ProductsType extends AbstractType
     {
         $builder
             ->add('nameProduct')
-            ->add('descriptionProduct')
+            ->add('descriptionProduct', CKEditorType::class)
             ->add('priceProduct')
             ->add('stockProduct')
             ->add('category', EntityType::class, [
