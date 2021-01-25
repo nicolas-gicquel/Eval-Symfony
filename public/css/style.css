@@ -5,3 +5,7 @@
 .navbar-brand img {
     max-width: 50px;
 }
+
+#products div {
+    margin-top: 10px;
+}
