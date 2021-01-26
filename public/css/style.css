@@ -1,10 +1,18 @@
+/****Content****/
+
 .content {
     margin-top: 75px;
 }
 
+
+/****Barre de navigation****/
+
 .navbar-brand img {
     max-width: 50px;
 }
+
+
+/****Page d'accueil****/
 
 #products div {
     margin-top: 10px;
