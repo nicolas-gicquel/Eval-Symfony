@@ -9,3 +9,8 @@
 #products div {
     margin-top: 10px;
 }
+
+.productBackgroundHome {
+    height: 120px;
+    background-size: cover !important;
+}

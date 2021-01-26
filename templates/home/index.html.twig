@@ -48,8 +48,11 @@
 								<div class="card h-100">
                                 {% for photo in product.photos %}
                                 
-                                    <a href="#"><img class="card-img-top" align:"top" src="{{asset('uploads/' ~ photo.namePhoto)}}" alt=""></a>
+                                    <a href="#">
+										<div class="productBackgroundHome" style="background: url('{{asset('uploads/' ~ photo.namePhoto)}}')"></div>
+									{# <img class="card-img-top" align:"top" src="{{asset('uploads/' ~ photo.namePhoto)}}" alt=""></a> #}
 									{# <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> #}
+									</a>
                                 {% endfor %}
 									<div class="card-body">
 										<h4 class="card-title">
