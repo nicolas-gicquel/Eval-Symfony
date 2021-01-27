@@ -45,7 +45,7 @@ class Products
     private $photos;
 
     /**
-     * @ORM\OneToMany(targetEntity=Orders::class, mappedBy="product")
+     * @ORM\OneToMany(targetEntity=Orders::class, mappedBy="product",cascade={"persist"})
      */
     private $orders;
 
@@ -55,7 +55,8 @@ class Products
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="products", cascade={"persist"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $user;
 

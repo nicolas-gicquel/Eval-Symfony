@@ -7,15 +7,15 @@
     <div class="container">
         <h1>Inscription</h1>
         {{ form_start(registrationForm) }}
-        <div><label>Nom: </label> {{ form_widget(registrationForm.firstName) }}</div>
-        <div><label>Prénom: </label> {{ form_widget(registrationForm.lastName) }}</div>
-        <div><label>Email: </label> {{ form_widget(registrationForm.email) }}</div>
-        <div><label>Mot de passe: </label> {{ form_widget(registrationForm.plainPassword, { label: 'Password' }) }}</div>
-        <div><label>Adresse: </label> {{ form_widget(registrationForm.adress) }}</div>
-        <div><label>Code Postal: </label> {{ form_widget(registrationForm.zipcode) }}</div>
-        <div><label>Ville: </label> {{ form_widget(registrationForm.city) }}</div>
-        <div>{{ form_widget(registrationForm.agreeTerms) }}<label>  J'accepte la politique de confidentialité</label></div>
-        <button type="submit" class="btn btn-primary">S'enregistrer</button> {{ form_end(registrationForm) }}
+        <div><label>Nom: </label><br>{{ form_widget(registrationForm.firstName) }}</div>
+        <div><label>Prénom: </label><br> {{ form_widget(registrationForm.lastName) }}</div>
+        <div><label>Email: </label><br> {{ form_widget(registrationForm.email) }}</div>
+        <div><label>Mot de passe: </label><br> {{ form_widget(registrationForm.plainPassword, { label: 'Password' }) }}</div>
+        <div><label>Adresse: </label><br> {{ form_widget(registrationForm.adress) }}</div>
+        <div><label>Code Postal: </label><br> {{ form_widget(registrationForm.zipcode) }}</div>
+        <div><label>Ville: </label><br> {{ form_widget(registrationForm.city) }}</div>
+        <div>{{ form_widget(registrationForm.agreeTerms) }}<label><br>  J'accepte la politique de confidentialité</label></div>
+        <button type="submit" class="btn btn-primary">S'inscrire</button> {{ form_end(registrationForm) }}
     </div>
 </div>
 {% endblock %}

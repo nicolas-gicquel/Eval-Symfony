@@ -56,7 +56,7 @@ class User implements UserInterface
     private $adress;
 
     /**
-     * @ORM\OneToMany(targetEntity=Products::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Products::class, mappedBy="user", cascade={"persist"})
      */
     private $products;
 
