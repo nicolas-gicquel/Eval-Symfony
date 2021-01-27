@@ -30,7 +30,7 @@ window.onload = () => {
 
                 })
             }
-            document.location.reload();
+            // document.location.reload();
         })
     }
 }
