@@ -46,5 +46,14 @@ class ProductsRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+*/
+    public function findByNumber($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->setMaxResults($value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
 }

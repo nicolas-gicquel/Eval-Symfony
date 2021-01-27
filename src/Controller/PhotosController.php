@@ -83,12 +83,24 @@ class PhotosController extends AbstractController
      */
     public function delete(Request $request, Photos $photo): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$photo->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($photo);
-            $entityManager->flush();
-        }
+        $data = json_decode($request->getContent(), true);
 
-        return $this->redirectToRoute('photos_index');
+        // On vérifie si le token est valide
+        if ($this->isCsrfTokenValid('delete' . $photo->getId(), $data['_token'])) {
+            // On récupère le nom de l'image
+            $nom = $photo->getNamePhoto();
+            // On supprime le fichier
+            unlink($this->getParameter('images_directory') . '/' . $nom);
+
+            // On supprime l'entrée de la base
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($photo);
+            $em->flush();
+
+            // On répond en json
+            return new JsonResponse(['success' => 1]);
+        } else {
+            return new JsonResponse(['error' => 'Token Invalide'], 400);
+        }
     }
 }

@@ -38,16 +38,16 @@ class ProductsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $photos = $form->get('photos')->getData();
-            foreach($photos as $photo){
+            foreach ($photos as $photo) {
                 // On génère un nouveau nom de fichier
-                $fichier = md5(uniqid()).'.'.$photo->guessExtension();
-                
+                $fichier = md5(uniqid()) . '.' . $photo->guessExtension();
+
                 // On copie le fichier dans le dossier uploads
                 $photo->move(
                     $this->getParameter('images_directory'),
                     $fichier
                 );
-                
+
                 // On crée l'image dans la base de données
                 $img = new Photos();
                 $img->setNamePhoto($fichier);
@@ -88,16 +88,16 @@ class ProductsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $photos = $form->get('photos')->getData();
-            foreach($photos as $photo){
+            foreach ($photos as $photo) {
                 // On génère un nouveau nom de fichier
-                $fichier = md5(uniqid()).'.'.$photo->guessExtension();
-                
+                $fichier = md5(uniqid()) . '.' . $photo->guessExtension();
+
                 // On copie le fichier dans le dossier uploads
                 $photo->move(
                     $this->getParameter('images_directory'),
                     $fichier
                 );
-                
+
                 // On crée l'image dans la base de données
                 $img = new Photos();
                 $img->setNamePhoto($fichier);
@@ -130,4 +130,6 @@ class ProductsController extends AbstractController
 
         return $this->redirectToRoute('products_index');
     }
+
+
 }

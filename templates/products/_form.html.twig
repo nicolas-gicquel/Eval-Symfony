@@ -1,5 +1,22 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }} 
+    <div><label>Libellé du produit:</label><br>{{ form_widget(form.nameProduct) }}</div>
+    <div><label>Description du produit:</label><br>{{ form_widget(form.descriptionProduct) }} </div>
+    <div><label>Prix du produit:</label><br>{{ form_widget(form.priceProduct) }} </div>
+    <div><label>Produits en stock:</label><br>{{ form_widget(form.stockProduct) }} </div>
+    <div><label>Catégorie du produit:</label><br>{{ form_widget(form.category) }} </div>
+    <div><label>Photos:</label><br>{{ form_widget(form.photos) }}  </div>
+    {% if app.request.attributes.get('_route') == 'products_edit' %}
+        <h2>Images</h2>
+        {% for photo in product.photos %}
+            <div>
+                <img src="{{ asset('/uploads/'~photo.namePhoto) }}" alt="" width="150">
+
+                {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+                <a href="{{ path('photos_delete', {id: photo.id})}}" data-delete data-token="{{ csrf_token('delete' ~ photo.id )}}">Supprimer</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+
  
 
     <button class="btn btn-dark">{{ button_label|default('Créer') }}</button>
