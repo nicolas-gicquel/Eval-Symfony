@@ -29,17 +29,7 @@ class AppFixtures extends Fixture
         $manager->persist($category);
         }
 
-        //Création d'un utilisateur
-        $user = new User;
-        $user->setEmail("ngicquel@arinfo.fr");
-        $user->setRoles(["ROLE_ADMIN"]);
-        $user->setPassword("admin");
-        $user->setFirstName("Nicolas");
-        $user->setLastName("Gicquel");
-        $user->setAdress("2 route de Notre Dame de Grace");
-        $user->setZipCode("44750");
-        $user->setCity("Quilly");
-        $manager->persist($user);
+    
 
 
         $manager->flush();

@@ -46,17 +46,20 @@
 						{% for product in products %}
 							<div class="col-lg-4 col-md-6 mb-4">
 								<div class="card h-100">
-                                {% for photo in product.photos %}
-                                
-                                    <a href="#">
-										<div class="productBackgroundHome" style="background: url('{{asset('uploads/' ~ photo.namePhoto)}}')"></div>
-									{# <img class="card-img-top" align:"top" src="{{asset('uploads/' ~ photo.namePhoto)}}" alt=""></a> #}
-									{# <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> #}
-									</a>
-                                {% endfor %}
+									{% if product.photos|length != 0 %}
+										{% for photo in product.photos %}
+											<a href="{{ path('products_show', {'id': product.id}) }}">
+												<div class="productBackgroundHome" style="background: url('{{asset('uploads/' ~ photo.namePhoto)}}')"></div>
+											</a>
+										{% endfor %}
+									{% else %}
+										<a href="{{ path('products_show', {'id': product.id}) }}">
+											<div class="productBackgroundHome" style="background: url('http://placehold.it/200x300')"></div>
+										</a>
+									{% endif %}
 									<div class="card-body">
 										<h4 class="card-title">
-											<a href="#">{{product.nameProduct}}</a>
+											<a href="{{ path('products_show', {'id': product.id}) }}">{{product.nameProduct}}</a>
 										</h4>
 										<h5>{{product.priceProduct}}€</h5>
 										<p class="card-text">{{product.descriptionProduct|striptags|u.truncate(100, '...',true)}}</p>
