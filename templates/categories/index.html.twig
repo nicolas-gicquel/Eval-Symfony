@@ -1,35 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categories index{% endblock %}
+{% block title %}Liste des catégories
+{% endblock %}
 
 {% block body %}
-    <h1>Categories index</h1>
+	<div class="content">
+		<div class="container">
+			<h1>Liste des categories</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NameCategory</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.nameCategory }}</td>
-                <td>
-                    <a href="{{ path('categories_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('categories_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Catégorie</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for category in categories %}
+						<tr>
+							<td>{{ category.id }}</td>
+							<td>{{ category.nameCategory }}</td>
+							<td>
+								<a href="{{ path('categories_show', {'id': category.id}) }}">Montrer</a>
+								<a href="{{ path('categories_edit', {'id': category.id}) }}">Modifier</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="3">Pas de catégorie trouvée</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
 
-    <a href="{{ path('categories_new') }}">Create new</a>
+	<a class="btn btn-primary floatR btnCreate" href="{{ path('categories_new') }}">Créer une nouvelle catégorie</a>
 {% endblock %}
