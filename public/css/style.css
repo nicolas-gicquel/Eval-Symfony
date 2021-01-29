@@ -41,6 +41,7 @@
 .productBackgroundHome {
     height: 300px;
     background-size: cover !important;
+    background-position: center !important;
 }
 
 .card-text {
