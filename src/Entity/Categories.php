@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoriesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Products;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CategoriesRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CategoriesRepository::class)
@@ -21,11 +23,18 @@ class Categories
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Votre catégorie doit contenir au moins deux lettres",
+     *      maxMessage = "Votre catégorie est trop longue (50 caractères maximum)"
+     * )
      */
     private $nameCategory;
 
     /**
      * @ORM\OneToMany(targetEntity=Products::class, mappedBy="category")
+     * @doesNotPerformAssertions
      */
     private $products;
 
