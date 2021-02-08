@@ -9,12 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class ProductsFormTest extends KernelTestCase{
     
-    public function testNewCategory(){
+    public function testNewProducts(){
         $products=(new Products())
-        ->setNameProduct('77')
-        ->setDescriptionProduct('77')
-        ->setPriceProduct('77')
-        ->setStockProduct('77');
+        ->setNameProduct(' ')
+        ->setDescriptionProduct(' ')
+        ->setPriceProduct(' ')
+        ->setStockProduct(' ');
         
         self::bootKernel();
         $error = self::$container->get('validator')->validate($products);
