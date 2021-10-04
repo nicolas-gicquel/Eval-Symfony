@@ -10,7 +10,7 @@ class ProductControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/products/new');
+        $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }

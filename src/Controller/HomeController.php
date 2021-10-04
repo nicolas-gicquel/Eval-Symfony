@@ -20,4 +20,37 @@ class HomeController extends AbstractController
             'products' => $productsRepository->findByNumber(6),
         ]);
     }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(CategoriesRepository $categoriesRepository, ProductsRepository $productsRepository): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'categories' => $categoriesRepository->findAll(),
+            'products' => $productsRepository->findByNumber(6),
+        ]);
+    }
+
+    /**
+     * @Route("/boutique", name="boutique")
+     */
+    public function boutique(CategoriesRepository $categoriesRepository, ProductsRepository $productsRepository): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'categories' => $categoriesRepository->findAll(),
+            'products' => $productsRepository->findByNumber(6),
+        ]);
+    }
+
+    /**
+     * @Route("/blog", name="blog")
+     */
+    public function blog(CategoriesRepository $categoriesRepository, ProductsRepository $productsRepository): Response
+    {
+        return $this->render('home/blog.html.twig', [
+            'categories' => $categoriesRepository->findAll(),
+            'products' => $productsRepository->findByNumber(6),
+        ]);
+    }
 }

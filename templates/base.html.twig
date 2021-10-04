@@ -7,9 +7,37 @@
     <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.png')}}"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
+    <script type="text/javascript" src="{{asset('tarteaucitron/tarteaucitron.js')}}"></script>
+		<script>
+			tarteaucitron.init({
+			"privacyUrl": "", /* URL de la page de la politique de vie privÃ©e */
+
+			"hashtag": "#tarteaucitron", /* Ouvrir le panneau contenant ce hashtag */
+			"cookieName": "tarteaucitron", /* Nom du Cookie */
+
+			"orientation": "middle", /* Position de la banniÃ©re (top - bottom) */
+			"showAlertSmall": true, /* Voir la banniÃ¨re rÃ©duite en bas Ã  droite */
+			"cookieslist": true, /* Voir la liste des cookies */
+
+			"adblocker": false, /* Voir une alerte si un bloqueur de publicitÃ©s est dÃ©tectÃ© */
+			"AcceptAllCta": true, /* Voir le bouton accepter tout (quand highPrivacy est Ã  true) */
+			"highPrivacy": true, /* DÃ©sactiver le consentement automatique */
+			"handleBrowserDNTRequest": false, /* Si la protection du suivi du navigateur est activÃ©e, tout interdire */
+
+			"removeCredit": false, /* Retirer le lien vers tarteaucitron.js */
+			"moreInfoLink": true, /* Afficher le lien 'voir plus d'infos' */
+			"useExternalCss": false, /* Si false, tarteaucitron.css sera chargÃ©*/
+
+			"cookieDomain": '.my-multisite-domaine.fr', /* Cookie multisite */
+
+			"readmoreLink": '/cookiespolicy' /* Lien vers la page 'Lire plus' */
+			});
+		</script>
+
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-27YXK4Q4N7"></script>
         <script>
           window.dataLayer = window.dataLayer || [];

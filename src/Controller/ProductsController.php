@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/products")
@@ -29,6 +30,7 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/new", name="products_new", methods={"GET","POST"})
+     * @isGranted("ROLE_USER")
      */
     public function new(Request $request, PhotosRepository $photosRepository): Response
     {

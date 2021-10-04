@@ -36,21 +36,24 @@ class ProductsRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Products
+  
+    // public function findOneBySomeField($priority,$nb): ?Products
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->andWhere('p.priority = :val')
+    //         ->setParameter('val', $priority)
+    //         ->setMaxResults($nb)
+    //         ->orderBy('p.id', 'DESC')
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+
+    public function findByNumber($nb)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-*/
-    public function findByNumber($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->setMaxResults($value)
+            ->setMaxResults($nb)
+            ->orderBy('p.id', 'DESC')
             ->getQuery()
             ->getResult()
         ;
